@@ -1,0 +1,53 @@
+@import "utils";
+
+.form {
+  display: flex;
+  flex-direction: column;
+  .title {
+    border-bottom: 1px solid $oc-gray-6;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  input {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid $oc-gray-5;
+    border-radius: 2px;
+    height: 2.5rem;
+    font-size: 1.5rem;
+
+    outline: none;
+    padding: 0.25rem;
+  }
+
+  .options {
+    margin-left: auto;
+    display: flex;
+    .option {
+      border: 2px solid $oc-gray-5;
+      border-radius: 2px;
+      padding-left: 0.25rem;
+      padding-right: 0.25rem;
+      background: $oc-gray-6;
+
+      color: white;
+      user-select: none;
+      cursor: pointer;
+
+      &:hover {
+        background: $oc-gray-7;
+      }
+
+      &:active {
+        background: $oc-gray-6;
+      }
+    }
+    .option + .option {
+      margin-left: 1rem;
+    }
+  }
+}
