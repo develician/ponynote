@@ -5,6 +5,6 @@ from .serializers import NoteSerializer
 
 
 class NoteViewSet(viewsets.ModelViewSet):
-    queryset = Note.objects.all()
+    queryset = Note.objects.all().order_by('-created_at')
     permission_classes = [permissions.AllowAny, ]
     serializer_class = NoteSerializer

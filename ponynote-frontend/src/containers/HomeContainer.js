@@ -1,13 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {
-  addNote,
-  changeNoteInput,
-  resetNote,
-  getNotes
-} from "store/actions/notes";
+import * as noteActions from "store/modules/notes";
 import AddForm from "components/note/AddForm";
 import DisplayWrapper from "components/note/DisplayWrapper";
+import NoteList from "components/note/NoteList";
 
 class HomeContainer extends Component {
   componentDidMount() {
@@ -29,7 +25,7 @@ class HomeContainer extends Component {
 
   render() {
     const { handleChangeNoteInput, addNote } = this;
-    const { noteInput, resetNote } = this.props;
+    const { noteInput, resetNote, notes } = this.props;
     return (
       <div>
         <DisplayWrapper>
@@ -39,6 +35,7 @@ class HomeContainer extends Component {
             onReset={resetNote}
             onAdd={addNote}
           />
+          <NoteList notes={notes} />
         </DisplayWrapper>
       </div>
     );
@@ -55,16 +52,16 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     changeNoteInput: noteInput => {
-      dispatch(changeNoteInput(noteInput));
+      dispatch(noteActions.changeNoteInput(noteInput));
     },
     resetNote: () => {
-      dispatch(resetNote());
+      dispatch(noteActions.resetNote());
     },
     getNotes: () => {
-      dispatch(getNotes());
+      dispatch(noteActions.getNotes());
     },
     addNote: () => {
-      dispatch(addNote());
+      dispatch(noteActions.addNote());
     }
   };
 };
